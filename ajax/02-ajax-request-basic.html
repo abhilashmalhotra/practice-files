@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJax Request</title>
+</head>
+<body>
+	<button id="load">Load</button>
+	<div id="output"></div>
+
+	<script type="text/javascript">
+		var button = document.getElementById('load');
+		var output = document.getElementById('output');
+		button.addEventListener('click',function(){
+			loadAjax();
+		});
+
+		function loadAjax () {
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET','https://randomuser.me/api' ,true);
+			xhr.onreadystatechange = function () {
+				if(xhr.readyState == 4 && xhr.status == 200){
+					var dataJSON = JSON.parse(xhr.responseText);
+					var data = dataJSON.results[0];
+					var result = data.name.title+' '+data.name.first+ ' '+data.name.last+'<br><img src="'+data.picture.large+'" alt=""> ';
+					output.innerHTML = result;
+					console.log(data)
+				}
+			}
+			xhr.send();
+		}
+		//console.log(xhr);
+	</script>
+</body>
+</html>

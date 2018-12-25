@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AjAX</title>
+	<style>
+	body{
+		padding: 50px;
+	}
+</style>
+</head>
+<body>
+	<button class="load-data">Load</button>
+	<ul id="output">
+		
+	</ul>
+	
+	<script>
+		
+
+		var button = document.querySelector('.load-data');
+		var output = document.getElementById('output');
+		button.addEventListener('click', loadJoke);
+		function loadJoke () {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					var dataJSON = JSON.parse(xhr.responseText);
+					data =  dataJSON.value
+					for(var key in data){
+						var list = '<li>'+ data[key].joke+ '</li>';
+						output.innerHTML += list;
+						console.log(list);
+					}
+					// console.log(dataJSON.value);
+				}
+			}
+			xhr.open('GET', 'http://api.icndb.com/jokes/', true);
+			xhr.send();
+		}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>From Data</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container mt-5">
+		<form id="myForm">
+			<div class="row">
+				<div class="col-md-12">
+					<div id="output"></div>
+				</div>
+				<div class="col-md-8">
+					<div class="form-group">
+						<label for="">First Name</label>
+						<input type="text" name="first-name" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="">Last Name</label>
+						<input type="text" name="last-name" class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Submit" id="button" class="btn btn-dark">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		var button = document.getElementById('button');
+		var myForm = document.getElementById('myForm');
+		var output = document.getElementById('output');
+		button.addEventListener('click', function(e){
+			e.preventDefault();
+			var data = formData(myForm);
+			output.innerHTML = '<h2>Welcome '+data['first-name']+' '+data['last-name']+'</h2>'
+ // console.log(data);
+});
+
+		function formData(form){
+			var getFormObj = {};
+			var el = form.querySelectorAll('input[type="text"]');
+			for(var x=0; x<el.length;x++){
+				var name = el[x].name;
+				var value = el[x].value;
+				getFormObj[name] = value;
+			}
+			return getFormObj;
+			// console.log(getFormObj);
+		}
+
+	</script>
+</body>
+</html>

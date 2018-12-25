@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jokes API</title>
+</head>
+<body>
+	<button id="load">Get Joke</button>
+	<div id="output"></div>
+	
+
+
+	<script type="text/javascript">
+		var button = document.getElementById('load');
+		var output = document.getElementById('output');
+		button.addEventListener('click', loadJoke);
+		function loadJoke(){
+			var url = 'https://api.chucknorris.io/jokes/random';
+			fetch(url).then(function(){
+				return response;
+			}).then(function(){
+
+			})
+			// var xhr = new XMLHttpRequest();
+			// xhr.onreadystatechange = function () {
+			// 	if(xhr.readyState == 4 && xhr.status == 200){
+			// 		var json = JSON.parse(xhr.responseText);
+			// 		var joke = json.value;
+			// 		var img = json.icon_url;
+			// 		var result = '<img src="'+img+'" alt=""><h2>'+joke+'</h2> ';
+			// 		output.innerHTML = result;
+			// 		console.log(json);
+			// 	}
+			// }
+			// xhr.open('GET', url, true);
+			// xhr.send();
+		}
+		
+	</script>
+</body>
+</html>

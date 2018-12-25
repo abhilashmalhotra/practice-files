@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSon</title>
+</head>
+<body>
+	<form id="myForm">
+		<input type="text" name="name" value="Abhilash Malhotra">
+		<br>
+		<br>
+		<input type="text" name="email" value="abhilashmalhotra17@gmail.com">
+		<br>
+		<br>
+		<input type="text" name="designation" value="UI Developer">
+		<br>
+		<br>
+		<input type="submit" value="submit">
+	</form>
+
+	<script>
+		var myForm = document.getElementById('myForm');
+		myForm.addEventListener('submit', function(e){
+			e.preventDefault();
+ 			var data = getFormJSON(myForm)
+ 			console.log(data);
+ 		});
+		function getFormJSON(formData){
+			var data = {};
+			var dataArray = formData.querySelectorAll('input[type="text"]');
+			dataArray.forEach(function(item){
+				var name = item.name;
+				var value = item.value;
+				data[name] = value;
+			});
+			return data;
+		}
+		// var data = '{"results":[{"gender":"female","name":{"title":"ms","first":"vicky","last":"griffin"},"location":{"street":"7674 highfield road","city":"stoke-on-trent","state":"west midlands","postcode":"TJ33 3EB","coordinates":{"latitude":"8.9863","longitude":"173.9672"},"timezone":{"offset":"+2:00","description":"Kaliningrad, South Africa"}},"email":"vicky.griffin@example.com","login":{"uuid":"f5e8c4df-c1af-4785-a788-939f76be51f8","username":"orangemeercat285","password":"ladder","salt":"fO8DGu3D","md5":"89c6011f102200b55ce76973a9df5156","sha1":"8c714486b754be92ea393a061fdb34de3e225cfb","sha256":"d31ebef57d6a610dcdd256c7adfb73aea39550e13d17db5beebe97dfd5f3b710"},"dob":{"date":"1976-10-07T12:24:42Z","age":42},"registered":{"date":"2018-04-13T19:11:58Z","age":0},"phone":"016977 37215","cell":"0727-344-701","id":{"name":"NINO","value":"XX 96 80 54 Q"},"picture":{"large":"https://randomuser.me/api/portraits/women/47.jpg","medium":"https://randomuser.me/api/portraits/med/women/47.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/47.jpg"},"nat":"GB"}],"info":{"seed":"86476a1ae88906ba","results":1,"page":1,"version":"1.2"}}';
+		// var dataJSON = JSON.parse(data);
+		// var result = dataJSON.results;
+		// var output = document.getElementById('output');
+		// for (var i = 0; i < result.length; i++) {
+		// 	output.innerHTML = result[i].name.title+ ' ' + result[i].name.first + ' ' + result[i].name.last;
+		// 	console.log(result[i]);
+		// }
+		// var strigJSON = JSON.stringify(dataJSON);
+		// console.log(strigJSON);
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Stars</title>
+</head>
+<body>
+	
+
+	<script>
+		function steps (n) {
+			for(var row = 0; row < n; row++){
+				var stair = '';
+				for(var column = 0; column < n; column++){
+					if(column <= row){
+						stair += '*';
+					} else {
+						stair += ' ';
+					}
+				}
+				console.log(stair);
+			}
+		}
+		steps(5);
+	</script>
+</body>
+</html>
